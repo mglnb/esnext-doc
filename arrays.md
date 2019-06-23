@@ -35,7 +35,52 @@ Array(users.numberOfPages).fill().map((_, index) =>
 
 ```
 
+## Iterating
 
+#### Simple iterating
 
+```javascript
+const users = []
+/**
+ * For I
+ */ 
+for (let i = 0; i < users.length; i++) {}
 
+/**
+ * For of (nice sintax, but bad perfomance)  
+ * But is what I mostly use, prefer this than Array.forEach
+ */
+for (let user of users) {}
+
+/**
+ * For in (only for objects) 
+ */ 
+const user = { name: "Miguel", birthday: "28/05/1996" }
+
+for (let userKeys of user) {
+    console.log(userKeys) // logs "name" and "birthday"
+}
+```
+
+**Async iterating**
+
+```javascript
+/**
+ * It's calling a await in every iteration
+ */
+async function asyncIterate() {
+    const promises = [
+      User.findAll(),
+      Roles.findAll(),
+    ]
+    
+    for await (let promise of promises) {
+      console.log(promise)
+    }
+    // logs:
+    // Array of users
+    // Array of roles
+}
+
+```
 
